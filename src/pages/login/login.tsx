@@ -1,6 +1,9 @@
-import './login.css'
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
+
+import './login.css'
+import Logo from '../../assets/logo.jpg';
+import Developer from '../../assets/developer.svg';
 
 function Login() {
   useEffect(() => {
@@ -8,88 +11,82 @@ function Login() {
   });
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [emailError, setEmailError] = useState<string>('');
-  const [passwordError, setPasswordError] = useState<string>('');
-  const [formError, setFormError] = useState<string>('');
+  const [isEmailValid, setIsEmailValid] = useState<boolean>(true)
+  const [isPasswordValid, setIsPasswordValid] = useState<boolean>(true); // Adiciona estado para rastrear a validade do e-mail
   const navigate = useNavigate();
 
-  function isValidEmail(email: string):boolean {
+  function isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
+  function isValidPassword(password: string): boolean {
+    return password.length >= 6;
+  }
+
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setEmail(value);
-    if(!isValidEmail(value)){
-      setEmailError('Por favor, insira um e-mail válido');
-    } else {
-      setEmailError('');
-    }
-    setFormError('');
+    setIsEmailValid(isValidEmail(value)); 
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setPassword(value);
-    if (value.length < 6) {
-      setPasswordError('A senha deve ter pelo menos 6 caracteres');
-    } else {
-      setPasswordError('');
-    }
-    setFormError('');
+    setIsPasswordValid(isValidPassword(value));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if(!isValidEmail(email)) {
-      setEmailError('Por favor, insira um e-mail válido');
-    }
-    if (password.length < 6) {
-      setPasswordError('A senha deve ter pelo menos 6 caracteres');
-    }
-    if (email && password.length >= 6) {
+    if (email && password.length >= 6 && isEmailValid) { // Verifica se o e-mail é válido
       navigate('/home');
-    }  else {
-      setFormError('Por favor, preencha todos os campos corretamente');
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">E-mail:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={handleEmailChange}
-          />
-          {emailError && <p className='error'>{emailError}</p>}
+    <>
+      <div className='wrapper'>
+        <div className='left'>
+          <div className='header'><img className='logo' src={Logo} alt="logo" /><h2>ESOFTUTORIAL</h2></div>
+          <div className='background'><img className='back-png' src={Developer} alt="developer your carrer" /></div>
         </div>
-        <div>
-          <label htmlFor="password">Senha:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          {passwordError && <p>{passwordError}</p>}
+        <div className='right'>
+          <div className="login">
+            <div className='signin'>
+              <div className="header-login">
+                <h2>Sign in</h2>
+                <p>Não tem conta? <a href="/register">Clique aqui.</a></p>
+              </div>
+              <form className='form' onSubmit={handleSubmit}>
+                <div className='label'>
+                  <label htmlFor="email">E-mail</label>
+                  <div className={`input ${!isEmailValid ? 'invalid' : ''}`}> {}
+                    <input
+                      type="email"
+                      id="email"
+                      value={email}
+                      onChange={handleEmailChange}
+                    />
+                  </div>
+                </div>
+                <div className='label'>
+                  <label htmlFor="password">Senha</label>
+                  <div className={`input ${!isPasswordValid ? 'invalid' : ''}`}> {}
+                    <input
+                      type="password"
+                      id="password"
+                      value={password}
+                      onChange={handlePasswordChange}
+                    />
+                  </div>
+                </div>
+                <a className='forgot' href="/forgot">Esqueceu a senha?</a>
+                <div className='div-btn'><button className='button' type="submit" disabled={!email || password.length < 6 || !isEmailValid}>Entrar</button></div>
+              </form>
+            </div>
+          </div>
         </div>
-        {formError && <p>{formError}</p>}
-        <button className = 'btn-login' type="submit" disabled={!email || password.length < 6}>
-          Entrar
-        </button>
-      </form>
-      <p>
-        Esqueceu sua senha? <a href="/forgot">Clique aqui.</a>.
-        </p>
-        <p>
-        Não tem conta? <a href="/register">Clique aqui.</a>.
-        </p>
-    </div>
+      </div>
+    </>
   );
 }
 
-export default Login
+export default Login;

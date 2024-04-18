@@ -1,0 +1,109 @@
+html,body {
+    padding:0;
+    margin:0;
+    vertical-align:baseline;
+    list-style:none;
+    }
+.left {
+    width: 50%;
+    background-color: #8a8a8a;
+}
+.backgroud {
+    display: flex;
+    justify-content: center; /* alinha horizontalmente */
+    align-items: center; /* alinha verticalmente */
+    height: 100%;
+}
+.logo {
+    width: 48px;
+    height: 48px;
+}
+
+.wrapper {
+    background-color: rgb(228, 223, 223);
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+}
+
+.right{
+    background: #ffffff;
+    width: 50%;
+}
+.header{
+    display: flex;
+    align-items: center; /* alinha verticalmente */
+    background-color: white;
+}
+
+.back-png {
+    width: 100%;
+}
+.signin{
+    width: 40%;
+}
+
+.login {
+    margin-top: 50%;
+    display: flex;
+    justify-content: center; /* alinha horizontalmente */
+    align-items: center; /* alinha verticalmente */
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.input {
+    border: 0.5px solid grey; /* Borda preta */
+    border-radius: 5px; /* Raio de borda */
+    padding: 5px; /* Espaçamento interno */
+}
+.invalid {
+    border: 0.5px solid rgb(177, 45, 45); /* Borda preta */
+    border-radius: 5px; /* Raio de borda */
+    padding: 5px; /* Espaçamento interno */
+}
+
+.input input {
+    border: none; /* Remover a borda padrão do input */
+    outline: none; /* Remover a borda ao clicar no input */
+    width: 100%; /* Faz o input preencher toda a largura da div */
+    box-sizing: border-box; /* Mantém a largura do input mesmo com o padding */
+}
+
+a {
+    text-decoration: none;
+    color: rgb(164, 72, 171);
+}
+
+
+form {
+    display: flex;
+    flex-direction: column; /* Organiza os itens verticalmente */
+    gap: 10px; /* Define um espaçamento de 5px entre os itens */
+}
+
+.div-btn{
+    margin-bottom: 10rem;
+}
+
+.button {
+    display: block; /* Torna o botão um elemento de bloco para ocupar todo o tamanho da div */
+    width: 100%; /* Faz o botão ocupar todo o tamanho da div */
+    padding: 10px; /* Adiciona algum espaçamento interno para o texto ficar mais legível */
+    text-align: center; /* Centraliza o texto horizontalmente */
+    background-color:  rgb(164, 72, 171); /* Cor de fundo roxo clarinho */
+    color: #fff; /* Cor do texto */
+    border: none; /* Remove a borda */
+    cursor: pointer; /* Transforma o cursor em uma mão ao passar sobre o botão */
+    transition: background-color 0.3s; /* Adiciona uma transição suave para mudanças de cor */
+    border-radius: 5px;
+}
+
+.button:hover,
+.button:focus {
+    background-color: #604097; /* Cor de fundo roxo mais escuro quando hover ou focado */
+}

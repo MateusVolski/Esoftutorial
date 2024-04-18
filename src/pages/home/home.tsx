@@ -1,12 +1,13 @@
 import './home.css'
 import { useEffect } from 'react';
+import Footer from '../../components/footer/footer'
 function Home() {
   useEffect(() => {
     document.title = `EsofTutorial - Home`;
   });
 
   return (
-      <div>Hello, World</div>
+      <Footer />
   )
 }
 export default Home

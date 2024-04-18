@@ -5,8 +5,9 @@ import Forgot from './pages/forgot/forgot.tsx'
 import Register from './pages/register/register.tsx'
 import NotFoundPage from './pages/notFoundPage/notFoundPage.tsx'
 
-import './main.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import './main.css'
 
 
 export default function App() {
