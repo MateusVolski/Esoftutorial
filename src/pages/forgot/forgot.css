@@ -1,0 +1,39 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid black; /* Adiciona uma borda preta */
+    padding: 20px; /* Adiciona espaço interno */
+}
+
+.container {
+    width: 100%;
+    text-align: center;
+    background-color: rgb(189, 186, 186);
+    margin: 10px;
+}
+
+
+.input-div {
+    display: flex;
+    flex-direction: row;
+}
+
+label{
+    margin-right: 10px;
+}
+
+.forgot-btn{
+    width: 10rem;
+    display: flex;
+    text-align: center;
+}

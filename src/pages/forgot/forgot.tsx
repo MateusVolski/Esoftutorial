@@ -33,13 +33,13 @@ function Forgot() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Recuperação de Senha</h2>
       {showForm ? (
         <form>
           <div>
-            <label htmlFor="email">
-              E-mail:
+            <label className= "one" htmlFor="email">
+              E-mail  
             </label>
             <input
               type="email"
@@ -48,12 +48,15 @@ function Forgot() {
               onChange={handleEmailChange}
               />
           </div>
-          <button
+          <div className="forgot-btn">
+          <button className="forgot-btn"
             type="button"
             onClick={handleRecoverClick}
             >
             Recuperar
           </button>
+          </div>
+          
         </form>
       ) : (
         <div>
